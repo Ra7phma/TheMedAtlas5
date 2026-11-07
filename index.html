@@ -1,1 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Med Atlas | UK Medicine Application Guide</title>
+<meta name="description" content="UCAT calculator, UK medical school requirements, cut-offs, revision tracker, MMI practice, work experience and extracurricular ideas for Year 12 and 13 students.">
+<style>
+:root{
+  --bg:#f5f8f9; --card:#ffffff; --ink:#14232b; --muted:#5b6c75; --line:#dde5e9;
+  --brand:#0f766e; --brand-dark:#0b5a54; --accent:#e0f2f1;
+  --green:#16a34a; --amber:#f59e0b; --red:#dc2626;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+a{color:var(--brand)}
+header.nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:1.25rem;color:var(--brand);text-decoration:none;letter-spacing:-.3px}
+.logo span{color:var(--ink)}
+nav a{margin-left:14px;text-decoration:none;color:var(--ink);font-weight:600;font-size:.88rem}
+nav a:hover{color:var(--brand)}
+.hero{background:linear-gradient(135deg,#0f766e,#134e4a);color:#fff;padding:64px 20px 56px;text-align:center}
+.hero h1{margin:0 0 12px;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-1px}
+.hero p{max-width:660px;margin:0 auto 24px;font-size:1.1rem;opacity:.92}
+.btn{display:inline-block;background:#fff;color:var(--brand-dark);padding:11px 22px;border-radius:999px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;margin:4px}
+.btn.solid{background:var(--brand);color:#fff}
+.btn.solid:hover{background:var(--brand-dark)}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+section{max-width:1100px;margin:0 auto;padding:48px 20px}
+section h2{font-size:1.8rem;margin:0 0 6px;letter-spacing:-.5px}
+section .sub{color:var(--muted);margin:0 0 24px;max-width:760px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.notice{background:#fffbeb;border:1px solid #fde68a;color:#78560a;padding:12px 16px;border-radius:10px;font-size:.9rem;margin-bottom:20px}
+.notice.info{background:#ecfeff;border-color:#a5f3fc;color:#155e75}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+input[type=text],input[type=number],input[type=date],select,textarea{padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+label.chk{display:flex;gap:6px;align-items:center;font-size:.92rem}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff}
+table{border-collapse:collapse;width:100%;min-width:1000px;font-size:.88rem}
+table.narrow{min-width:560px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--accent);font-size:.78rem;text-transform:uppercase;letter-spacing:.4px;color:var(--brand-dark)}
+tr:last-child td{border-bottom:0}
+.tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.75rem;font-weight:700;background:var(--accent);color:var(--brand-dark)}
+.tag.no{background:#fee2e2;color:#991b1b}
+.tag.chk{background:#fef3c7;color:#92400e}
+.tag.style{background:#e0e7ff;color:#3730a3}
+.tag.iv{background:#fce7f3;color:#9d174d}
+.num{font-weight:700;font-size:1rem}
+.mini{display:block;font-size:.72rem;color:var(--muted);font-weight:400}
+.intro{display:block;font-size:.84rem;color:var(--ink);font-weight:400;margin-top:6px;line-height:1.45}
+@media(min-width:761px){#uniTable td:first-child{min-width:280px}}
+/* Tables become cards on phones */
+@media(max-width:760px){
+  table,table.narrow{min-width:0}
+  thead{display:none}
+  table,tbody,tr,td{display:block;width:100%}
+  tr{padding:12px 4px;border-bottom:8px solid var(--bg)}
+  td{border-bottom:0;padding:5px 12px}
+  td::before{content:attr(data-label);display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.4px;color:var(--brand-dark);font-weight:700}
+  td:first-child{font-size:1.05rem}
+  #uniTable td:first-child::before{display:none}
+}
+/* Leaderboard */
+.score-box{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.score-box input[type=range]{flex:1;min-width:200px;accent-color:var(--brand)}
+.score-box input[type=number]{width:110px;font-size:1.1rem;font-weight:700}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin-bottom:14px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.legend i.stripe{background:repeating-linear-gradient(45deg,#9ca3af 0 3px,#e5e7eb 3px 6px)}
+.board{display:flex;flex-direction:column;gap:6px}
+.row{display:grid;grid-template-columns:28px 190px 1fr 84px;gap:10px;align-items:center;font-size:.88rem}
+.rank{color:var(--muted);font-weight:700;text-align:right}
+.name{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.track{position:relative;height:22px;background:#eef3f5;border-radius:6px}
+.bar{height:100%;border-radius:6px;transition:width .4s,background-color .3s}
+.row.pred .bar{background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.55) 0 5px,rgba(255,255,255,0) 5px 10px)}
+.row.none .track{background:transparent;border:1px dashed var(--line);height:auto;min-height:22px;padding:3px 8px;display:flex;align-items:center}
+.note{font-size:.76rem;color:var(--muted);line-height:1.3}
+.comp{position:absolute;top:-3px;bottom:-3px;width:3px;background:#14232b;border-radius:2px}
+.me{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--brand)}
+.val{font-weight:700;text-align:right;line-height:1.15}
+.val .st{display:block;font-size:.66rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.3px}
+@media(max-width:640px){.row{grid-template-columns:22px 104px 1fr 70px;font-size:.8rem}}
+/* Calculator and general layout */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.field{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.field label{font-weight:600;font-size:.9rem}
+.result{background:var(--accent);border-radius:12px;padding:16px;margin-top:8px}
+.result .big{font-size:2.2rem;font-weight:800;color:var(--brand-dark);line-height:1.1}
+.small{font-size:.85rem;color:var(--muted)}
+/* Card grids */
+.wegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.we h3{margin:6px 0;font-size:1.05rem}
+.we p{margin:6px 0;font-size:.92rem}
+.we ul{margin:6px 0 6px 18px;padding:0;font-size:.92rem}
+.we li{margin:3px 0}
+.tips{margin:8px 0 0 18px;padding:0}
+.tips li{margin:6px 0}
+h3.block{margin:32px 0 12px;font-size:1.2rem}
+/* Revision tracker */
+.timer-display{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:2.4rem;font-weight:800;color:var(--brand-dark);margin:8px 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
+.stat{background:var(--accent);border-radius:12px;padding:12px;text-align:center}
+.stat b{display:block;font-size:1.4rem;color:var(--brand-dark)}
+.stat span{font-size:.78rem;color:var(--muted)}
+.prog{height:14px;background:#eef3f5;border-radius:999px;overflow:hidden;margin:8px 0}
+.prog i{display:block;height:100%;background:var(--brand);border-radius:999px;transition:width .4s}
+.days{display:flex;gap:8px;align-items:flex-start}
+.day{flex:1;text-align:center;font-size:.75rem;color:var(--muted)}
+.dwrap{height:100px;display:flex;align-items:flex-end}
+.dbar{width:100%;background:var(--brand);border-radius:4px 4px 0 0;min-height:2px}
+.day small{display:block;min-height:1em;font-size:.68rem}
+.sbars{display:flex;flex-direction:column;gap:8px}
+.sb{display:grid;grid-template-columns:170px 1fr 70px;gap:8px;align-items:center;font-size:.85rem}
+.sb .t{height:12px;background:#eef3f5;border-radius:6px}
+.sb .t i{display:block;height:100%;background:var(--brand);border-radius:6px}
+.sb .v{text-align:right;font-weight:700}
+@media(max-width:640px){.sb{grid-template-columns:110px 1fr 60px}}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btnrow .btn{margin:2px 0}
+.del{background:none;border:0;color:#b91c1c;cursor:pointer;text-decoration:underline;font:inherit;padding:0}
+/* MMI practice */
+.mmiq{font-size:1.2rem;font-weight:700;line-height:1.4;margin:10px 0;min-height:3.5em}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0}
+summary{cursor:pointer;font-weight:700}
+details ol{margin:10px 0 6px 20px;padding:0}
+details li{margin:6px 0}
+footer{background:#14232b;color:#c5d2d8;padding:32px 20px;text-align:center;font-size:.88rem}
+footer p{max-width:760px;margin:6px auto}
+</style>
+</head>
+<body>
 
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#top">The Med <span>Atlas</span></a>
+    <nav>
+      <a href="#unis">Universities</a>
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#averages">Averages</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#ucat-resources">UCAT</a>
+      <a href="#revision">Revision</a>
+      <a href="#mmi">MMI</a>
+      <a href="#experience">Experience</a>
+      <a href="#extracurriculars">Extras</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <h1>Your map to medical school.</h1>
+  <p>Built for Year 12 and 13 students applying to medicine in the UK. Compare 36 medical schools, check where your UCAT score gets you, track your revision and practise for MMIs.</p>
+  <a class="btn" href="#leaderboard">See where my UCAT can get me</a>
+  <a class="btn" href="#revision">Track my revision</a>
+</div>
+
+<section id="unis">
+  <h2>Medical school requirements</h2>
+  <p class="sub">A short introduction to each school's teaching style, interview format and how each university uses the UCAT, the Situational Judgement Test (SJT), GCSEs and A-levels, plus the lowest UCAT score invited to interview last year (2026 entry), or the published minimum score where that is all a school shares.</p>
+  <div class="notice info"><b>New UCAT format.</b> Since 2025 the UCAT has three scored subtests (Verbal Reasoning, Decision Making, Quantitative Reasoning), each 300 to 900, so the <b>total is out of 2700</b>. Abstract Reasoning has been removed. The SJT is reported separately as Band 1 to 4. Scores from before 2025 were out of 3600 and can't be compared directly, so published figures here are all on the 2700 scale. Where a school has no figure on the new scale, I show a clearly labelled <b>predicted</b> score instead (see the note under the table).</div>
+  <div class="notice info"><b>Learning styles explained.</b> <b>Integrated:</b> science and clinical medicine are taught together from early on, usually with patient contact in the first year. <b>PBL / case-based:</b> you learn mainly in small groups, working through patient cases and finding out what you need to know. <b>Traditional (science-first):</b> a few years of mostly science-based study before clinical training. These are broad labels, and most schools blend styles. Summaries are brief and courses change, so confirm on each university's course page and at open days.</div>
+  <div class="notice"><b>Please check before you apply.</b> Universities set interview thresholds after applications close, and they change every year. A "lowest invited" score is what the last cohort needed, not a guarantee. A "published minimum" is a cut-off the university states in advance, which is not the same thing as the lowest score actually invited. Where a school uses a combined points score or publishes no figure, the table says so. Always confirm on each university's own admissions page before choosing your four medicine choices on UCAS.</div>
+  <div class="controls">
+    <input type="text" id="uniSearch" placeholder="Search a university..." aria-label="Search a university">
+    <select id="uniRegion" aria-label="Filter by nation">
+      <option value="">All nations</option>
+      <option>England</option><option>Scotland</option><option>Wales</option><option>Northern Ireland</option>
+    </select>
+    <select id="uniStyle" aria-label="Filter by learning style">
+      <option value="">All learning styles</option>
+      <option value="Integrated">Integrated</option>
+      <option value="PBL / case-based">PBL / case-based</option>
+      <option value="Traditional">Traditional (science-first)</option>
+    </select>
+    <select id="uniIv" aria-label="Filter by interview format">
+      <option value="">All interview formats</option>
+      <option value="MMI">MMI</option>
+      <option value="Panel">Panel</option>
+      <option value="Group task">Group task</option>
+    </select>
+    <label class="chk"><input type="checkbox" id="uniUcatOnly"> Only show unis with a published figure</label>
+  </div>
+  <div class="table-wrap">
+    <table id="uniTable">
+      <thead><tr>
+        <th>University</th><th>Nation</th><th>Lowest UCAT invited to interview</th><th>Average invited</th><th>How UCAT is used</th><th>SJT</th><th>GCSEs</th><th>A-levels</th>
+      </tr></thead>
+      <tbody id="uniBody"></tbody>
+    </table>
+  </div>
+  <p class="small">Figures are totals of the three cognitive subtests (range 900 to 2700). Unless stated, they are for UK (home) applicants who are not in a widening participation group, for 2026 entry (test sat in summer 2025). <b>Predicted</b> figures are my own rough estimates, made by taking an older published score out of 3600 and subtracting 650 (a rule of thumb used by some UCAT sites). They are not official and are not shown as real cut-offs. Interview formats come from a 2026 listing and can change. Sources: published university admissions pages as compiled by TheUKCATPeople, The Medic Portal, MedEntry and Dukes Plus, checked November 2026. "Check university" means I couldn't confirm a detail.</p>
+</section>
+
+<section id="leaderboard">
+  <h2>UCAT leaderboard</h2>
+  <p class="sub">Enter your total UCAT score (out of 2700) and see where you stand against last year's lowest invited-to-interview scores. Schools with a published figure are ranked first. Every other school is listed underneath.</p>
+  <div class="card">
+    <div class="score-box">
+      <label for="myScore"><b>Your total score:</b></label>
+      <input type="number" id="myScore" min="900" max="2700" value="2100">
+      <input type="range" id="myRange" min="900" max="2700" step="10" value="2100" aria-label="Your total score slider">
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--green)"></i>Well above</span>
+      <span><i style="background:var(--amber)"></i>Above, but close</span>
+      <span><i style="background:var(--red)"></i>Below last year's lowest score</span>
+      <span><i class="stripe"></i>Striped = predicted, not official</span>
+      <span><i style="background:#14232b"></i>Average invited score (where published)</span>
+      <span><i style="background:var(--brand)"></i>Your score</span>
+    </div>
+    <h3 style="margin:0 0 10px;font-size:1.05rem">Schools with a published figure</h3>
+    <div class="board" id="board" role="list"></div>
+    <h3 style="margin:26px 0 6px;font-size:1.05rem">Other medical schools</h3>
+    <p class="small" style="margin:0 0 10px">These schools don't publish a lowest-invited or minimum score on the 2700 scale. Where I could estimate one from an older score, it appears as a striped bar with a "~" in front. The rest rank applicants on points that combine several things, so the box explains how each one selects.</p>
+    <div class="board" id="boardOther" role="list"></div>
+    <p class="small" style="margin-top:12px">Chart scale runs from 1500 to 2500. Scores outside that range appear at the edge of the chart. "(min)" after a name means the figure is a published minimum rather than the lowest score actually invited.</p>
+    <p class="small" id="boardSummary" style="margin-top:10px" aria-live="polite"></p>
+    <p class="small"><b>How the labels work:</b> "Well above" means you're at or above the average invited score where one is published, or 100+ points above the lowest score where it isn't. "Above" means you're over the lowest score but not by much. "Below" means you're under it. That is a rough guide, not a prediction, and predicted bars are less reliable than published ones.</p>
+    <p class="small">UCAT is only one part of your application. Many universities also weigh GCSEs, the SJT band, predicted grades, the personal statement and the interview.</p>
+  </div>
+</section>
+
+<section id="averages">
+  <h2>National UCAT averages</h2>
+  <p class="sub">How the whole cohort scored in 2026 (out of 2700), so you can see where your score sits.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">2026 at a glance</h3>
+      <p><b>Mean total: 1918</b> (42,359 tests)<br>
+      Verbal Reasoning: 602<br>Decision Making: 640<br>Quantitative Reasoning: 675</p>
+      <p class="small">2025 mean was 1891 (41,354 tests): VR 602, DM 628, QR 661. The top 10% started at 2250 in 2026.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">SJT bands</h3>
+      <p>2026: Band 1 15%, Band 2 40%, Band 3 34%, Band 4 11%<br>
+      2025: Band 1 21%, Band 2 39%, Band 3 29%, Band 4 10%</p>
+      <p class="small">SJT bands are not set quotas, so the percentages move year to year.</p>
+    </div>
+  </div>
+  <h3 class="block">2026 deciles</h3>
+  <div class="table-wrap">
+    <table class="narrow">
+      <thead><tr><th>Decile</th><th>Percentile</th><th>2026 total</th><th>Verbal</th><th>Decision Making</th><th>Quantitative</th><th>2025 total</th></tr></thead>
+      <tbody>
+        <tr><td data-label="Decile">1st</td><td data-label="Percentile">10th</td><td data-label="2026 total">1590</td><td data-label="Verbal">500</td><td data-label="Decision Making">520</td><td data-label="Quantitative">530</td><td data-label="2025 total">1580</td></tr>
+        <tr><td data-label="Decile">2nd</td><td data-label="Percentile">20th</td><td data-label="2026 total">1700</td><td data-label="Verbal">540</td><td data-label="Decision Making">560</td><td data-label="Quantitative">580</td><td data-label="2025 total">1680</td></tr>
+        <tr><td data-label="Decile">3rd</td><td data-label="Percentile">30th</td><td data-label="2026 total">1780</td><td data-label="Verbal">560</td><td data-label="Decision Making">590</td><td data-label="Quantitative">600</td><td data-label="2025 total">1760</td></tr>
+        <tr><td data-label="Decile">4th</td><td data-label="Percentile">40th</td><td data-label="2026 total">1850</td><td data-label="Verbal">580</td><td data-label="Decision Making">620</td><td data-label="Quantitative">640</td><td data-label="2025 total">1820</td></tr>
+        <tr><td data-label="Decile">5th</td><td data-label="Percentile">50th</td><td data-label="2026 total">1920</td><td data-label="Verbal">600</td><td data-label="Decision Making">640</td><td data-label="Quantitative">670</td><td data-label="2025 total">1880</td></tr>
+        <tr><td data-label="Decile">6th</td><td data-label="Percentile">60th</td><td data-label="2026 total">1980</td><td data-label="Verbal">620</td><td data-label="Decision Making">670</td><td data-label="Quantitative">700</td><td data-label="2025 total">1950</td></tr>
+        <tr><td data-label="Decile">7th</td><td data-label="Percentile">70th</td><td data-label="2026 total">2050</td><td data-label="Verbal">640</td><td data-label="Decision Making">690</td><td data-label="Quantitative">730</td><td data-label="2025 total">2010</td></tr>
+        <tr><td data-label="Decile">8th</td><td data-label="Percentile">80th</td><td data-label="2026 total">2140</td><td data-label="Verbal">670</td><td data-label="Decision Making">710</td><td data-label="Quantitative">780</td><td data-label="2025 total">2100</td></tr>
+        <tr><td data-label="Decile">9th</td><td data-label="Percentile">90th</td><td data-label="2026 total">2250</td><td data-label="Verbal">710</td><td data-label="Decision Making">760</td><td data-label="Quantitative">820</td><td data-label="2025 total">2220</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small">A score at or above a decile's figure beats that percentage of test-takers. Interim results published in September usually fall by about 50 points by the final release (the 2026 interim mean of 1970 ended at 1918), so use the final figures. Check the official UCAT website for updates.</p>
+</section>
+
+<section id="calculator">
+  <h2>UCAT calculator</h2>
+  <p class="sub">Two tools: add up your scaled scores, or turn raw practice marks into percentages.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">Total score calculator</h3>
+      <p class="small">Each of the three cognitive subtests is scored from 300 to 900.</p>
+      <div class="field"><label for="vr">Verbal Reasoning</label><input type="number" id="vr" min="300" max="900" placeholder="300 to 900"></div>
+      <div class="field"><label for="dm">Decision Making</label><input type="number" id="dm" min="300" max="900" placeholder="300 to 900"></div>
+      <div class="field"><label for="qr">Quantitative Reasoning</label><input type="number" id="qr" min="300" max="900" placeholder="300 to 900"></div>
+      <div class="field"><label for="sjt">Situational Judgement band</label>
+        <select id="sjt"><option value="1">Band 1 (best)</option><option value="2">Band 2</option><option value="3">Band 3</option><option value="4">Band 4</option></select>
+      </div>
+      <button class="btn solid" id="calcBtn" type="button">Calculate</button>
+      <div class="result" id="calcResult" hidden></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Practice mark converter</h3>
+      <p class="small">Enter how many you got right out of the total in a mock section. Official scaled scores can't be worked out from raw marks, so use this as a rough progress tracker only.</p>
+      <div id="rawRows"></div>
+      <button class="btn solid" id="rawBtn" type="button">Work out percentages</button>
+      <div class="result" id="rawResult" hidden></div>
+    </div>
+  </div>
+</section>
+
+<section id="ucat-resources">
+  <h2>UCAT resources</h2>
+  <p class="sub">Where to practise, learn the test and find advice. Start with the official free material, then add one good question bank if you need more.</p>
+  <div class="notice">Prices, free trials and what's included change often, so check each site before you pay. You don't need to buy every resource, and paid courses are never required to get a good score.</div>
+  <div class="wegrid" id="urGrid"></div>
+  <h3 class="block">UCAT preparation tips</h3>
+  <div class="card">
+    <ul class="tips">
+      <li><b>Start with the official site.</b> The real practice tests use the same interface as test day, including the on-screen calculator, so get comfortable with them early.</li>
+      <li><b>Learn first, then time yourself.</b> Work through each section untimed to understand the question types, then move to timed practice as the test gets closer.</li>
+      <li><b>Keep an error log.</b> Write down why you got each question wrong (misread, ran out of time, didn't know the method). Patterns show you what to fix.</li>
+      <li><b>Build a steady routine.</b> Many students prepare for roughly six to eight weeks, a little each day. Start earlier if you have exams or a busy schedule. The revision tracker below can help you stick to it.</li>
+      <li><b>Don't forget the SJT.</b> It is reported as a band, and many universities reject Band 4. Read the official guidance and the GMC's professional standards to understand what good professional behaviour looks like.</li>
+      <li><b>Check bursaries and deadlines.</b> Eligible UK students may get help with the test fee. Registration and booking windows are on the official UCAT website.</li>
+      <li><b>One good question bank is enough.</b> Doing fewer questions and reviewing them properly beats rushing through several banks.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="revision">
+  <h2>Revision tracker</h2>
+  <p class="sub">Log your UCAT and interview revision, watch your weekly total build up and keep a streak going.</p>
+  <div class="notice info"><b>Private to you.</b> Your log is saved only in this browser on this device. Nothing is sent anywhere. Clearing your browser data or using a private window will remove it, so use <b>Export CSV</b> now and then to keep a copy.</div>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">Start a revision session</h3>
+      <div class="field"><label for="revSec">What are you working on?</label><select id="revSec"></select></div>
+      <div class="field"><label for="revNote">Note (optional)</label><input type="text" id="revNote" maxlength="120" placeholder="e.g. Timed VR set, 2 passages"></div>
+      <div class="timer-display" id="revClock" aria-label="Stopwatch">00:00:00</div>
+      <div class="btnrow">
+        <button class="btn solid" id="revStart" type="button">Start</button>
+        <button class="btn solid" id="revStop" type="button">Stop and save</button>
+        <button class="btn ghost" id="revReset" type="button">Reset</button>
+      </div>
+      <p class="small" style="margin-bottom:0">The stopwatch keeps counting even if your phone locks or you switch tabs.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Add time you've already done</h3>
+      <p class="small">Uses the section and note on the left.</p>
+      <div class="field"><label for="revDate">Date</label><input type="date" id="revDate"></div>
+      <div class="field"><label for="revMins">Minutes</label><input type="number" id="revMins" min="1" max="720" placeholder="e.g. 45"></div>
+      <button class="btn solid" id="revAdd" type="button">Add to log</button>
+      <p class="small" id="revMsg" style="margin-bottom:0" aria-live="polite"></p>
+    </div>
+  </div>
+  <div class="grid2" style="margin-top:20px">
+    <div class="card">
+      <h3 style="margin-top:0">Your progress</h3>
+      <div class="stats" id="revStats"></div>
+      <div class="field" style="margin-top:16px"><label for="revGoal">Weekly goal (hours)</label><input type="number" id="revGoal" min="1" max="60" step="0.5" value="5"></div>
+      <div class="prog" aria-hidden="true"><i id="revProg" style="width:0%"></i></div>
+      <p class="small" id="revProgText" style="margin:0"></p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">UCAT test date</h3>
+      <div class="field"><label for="revTest">When is your test?</label><input type="date" id="revTest"></div>
+      <p id="revCountdown" style="margin:0"></p>
+      <p class="small">The test is sat between July and September in the year you apply. Book your slot on the official UCAT website.</p>
+      <h3 style="margin:18px 0 8px">Last 7 days</h3>
+      <div class="days" id="revDays"></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:20px">
+    <h3 style="margin-top:0">Time by section</h3>
+    <div class="sbars" id="revSecs"></div>
+  </div>
+  <h3 class="block">Your log</h3>
+  <div class="btnrow" style="margin-bottom:10px">
+    <button class="btn ghost" id="revExport" type="button">Export CSV</button>
+    <button class="btn ghost" id="revClear" type="button">Clear all</button>
+  </div>
+  <div class="table-wrap">
+    <table class="narrow">
+      <thead><tr><th>Date</th><th>Section</th><th>Time</th><th>Note</th><th></th></tr></thead>
+      <tbody id="revBody"></tbody>
+    </table>
+  </div>
+  <p class="small" id="revLogNote"></p>
+</section>
+
+<section id="mmi">
+  <h2>MMI and interview practice</h2>
+  <p class="sub">Most medical schools use interviews to decide who gets an offer. Many use Multiple Mini Interviews (MMIs): a series of short stations, each with its own task and scorer. Others use panel interviews or group tasks, so check the interview tag next to each university above.</p>
+  <div class="card" style="margin-bottom:20px">
+    <h3 style="margin-top:0">MMI basics</h3>
+    <ul class="tips">
+      <li><b>Each station is a fresh start.</b> If one goes badly, reset and focus on the next.</li>
+      <li><b>Take a breath before you answer.</b> A short pause to structure your thoughts looks confident.</li>
+      <li><b>Be yourself.</b> Interviewers can spot memorised scripts, so practise ideas and structure, not word-for-word answers.</li>
+      <li><b>Practise out loud.</b> Use the tool below with a friend, a teacher or even a mirror, and try recording yourself.</li>
+      <li><b>Read around the topics.</b> Follow NHS and healthcare news, and read the GMC's professional standards and the NHS values.</li>
+    </ul>
+  </div>
+  <h3 class="block" style="margin-top:0">Practice tool</h3>
+  <div class="card">
+    <div class="controls">
+      <select id="mmiCat" aria-label="Question type"></select>
+      <select id="mmiTime" aria-label="Time limit">
+        <option value="2">2 minutes</option>
+        <option value="3">3 minutes</option>
+        <option value="5" selected>5 minutes</option>
+        <option value="7">7 minutes</option>
+      </select>
+      <button class="btn solid" id="mmiNew" type="button">New question</button>
+    </div>
+    <span class="tag style" id="mmiCatLabel">Pick a question</span>
+    <div class="mmiq" id="mmiQ">Press "New question" to get a practice question, then start the timer and answer out loud.</div>
+    <div class="timer-display" id="mmiClock" aria-live="off">05:00</div>
+    <div class="btnrow">
+      <button class="btn solid" id="mmiStart" type="button">Start timer</button>
+      <button class="btn ghost" id="mmiStop" type="button">Stop</button>
+      <button class="btn ghost" id="mmiReset" type="button">Reset</button>
+      <button class="btn ghost" id="mmiLog" type="button">Add to revision log</button>
+    </div>
+    <p class="small" id="mmiMsg" aria-live="polite"></p>
+    <div class="result" id="mmiHints" hidden></div>
+  </div>
+  <h3 class="block">All practice questions</h3>
+  <div id="mmiLists"></div>
+  <p class="small">These are original practice prompts for rehearsal. They are not real exam questions, and there are rarely single "right" answers. Real stations differ between universities.</p>
+  <h3 class="block">MMI and interview resources</h3>
+  <div class="wegrid" id="mrGrid"></div>
+</section>
+
+<section id="experience">
+  <h2>Work experience and volunteering</h2>
+  <p class="sub">Medical schools want to see that you understand what a career in healthcare involves and that you have shown care for others. Formal shadowing isn't required, and volunteering and caring roles count just as much.</p>
+  <div class="notice">Eligibility, minimum ages and availability change often. Check each provider's website before applying. Never pay anyone to guarantee you a placement at an NHS site, and remember that paid programmes are not required or favoured by medical schools.</div>
+  <div class="controls">
+    <input type="text" id="weSearch" placeholder="Search opportunities..." aria-label="Search opportunities">
+    <select id="weType" aria-label="Filter by online or in person">
+      <option value="">Online and in person</option>
+      <option value="Online">Online</option>
+      <option value="In person">In person</option>
+    </select>
+    <select id="weCost" aria-label="Filter by cost">
+      <option value="">Any cost</option>
+      <option value="Free">Free</option>
+      <option value="Paid">Paid</option>
+      <option value="Mixed">Mixed (free and paid)</option>
+    </select>
+  </div>
+  <div class="wegrid" id="weGrid"></div>
+</section>
+
+<section id="extracurriculars">
+  <h2>Extracurriculars for a well-rounded application</h2>
+  <p class="sub">Medical schools aren't looking for a long list of activities. They want evidence of the qualities good doctors need, such as teamwork, empathy, communication, resilience and curiosity, and proof that you've thought about what you learned.</p>
+  <div class="notice info"><b>Quality over quantity.</b> A few activities you enjoy and stick with will do far more for you than a packed CV. Some universities score the personal statement and many don't, but your activities still feed into your interview, so check how each school uses it.</div>
+  <div class="wegrid">
+    <div class="card we">
+      <span class="tag">Care and compassion</span>
+      <h3>Caring and volunteering</h3>
+      <p>Regular, long-term roles say more than one-off days.</p>
+      <ul>
+        <li>Hospital, hospice or care home volunteering</li>
+        <li>Befriending or charity work</li>
+        <li>Caring for a family member</li>
+        <li>Community or faith-based service</li>
+      </ul>
+    </div>
+    <div class="card we">
+      <span class="tag">Teamwork and leadership</span>
+      <h3>Working with others</h3>
+      <p>Show what you actually did, not just the title you held.</p>
+      <ul>
+        <li>Sports teams, orchestras, choirs or drama groups</li>
+        <li>Scouts, Guides, cadets or the Duke of Edinburgh's Award</li>
+        <li>Running a society or club</li>
+        <li>School council or prefect roles</li>
+      </ul>
+    </div>
+    <div class="card we">
+      <span class="tag">Communication</span>
+      <h3>Helping others learn and listen</h3>
+      <p>Doctors spend their days explaining things and listening carefully.</p>
+      <ul>
+        <li>Peer mentoring or tutoring younger students</li>
+        <li>Debating and public speaking</li>
+        <li>Buddy or transition schemes</li>
+        <li>Customer-facing part-time work</li>
+      </ul>
+    </div>
+    <div class="card we">
+      <span class="tag">Resilience</span>
+      <h3>Commitment and balance</h3>
+      <p>Sustained effort over years shows stamina, and it helps you stay well.</p>
+      <ul>
+        <li>A sport or fitness activity you keep up</li>
+        <li>Music grades or creative projects</li>
+        <li>A part-time job (excellent evidence of responsibility)</li>
+        <li>Learning a language or a craft</li>
+      </ul>
+    </div>
+    <div class="card we">
+      <span class="tag">Curiosity</span>
+      <h3>Academic interest</h3>
+      <p>Show that you enjoy the science and think critically about it.</p>
+      <ul>
+        <li>An Extended Project Qualification (EPQ)</li>
+        <li>Nuffield Research Placements</li>
+        <li>Science or medical society, Biology or Chemistry Olympiad</li>
+        <li>Wider reading, podcasts and free online courses</li>
+      </ul>
+    </div>
+    <div class="card we">
+      <span class="tag">Practical skills</span>
+      <h3>First aid and life skills</h3>
+      <p>Handy for the real world and a good talking point at interview.</p>
+      <ul>
+        <li>First aid training with St John Ambulance or the Red Cross</li>
+        <li>Lifeguard or coaching qualifications</li>
+        <li>Cooking, crafts or hands-on projects</li>
+      </ul>
+    </div>
+    <div class="card we">
+      <span class="tag">Insight</span>
+      <h3>Understanding healthcare</h3>
+      <p>Show you know what the job and the NHS are really like.</p>
+      <ul>
+        <li>Follow NHS and medical news</li>
+        <li>Read about medical ethics and debate it</li>
+        <li>Attend university open days and outreach events</li>
+        <li>Reflect on work experience, including the hard parts</li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="block">How to make your activities count</h3>
+  <div class="card">
+    <ul class="tips">
+      <li><b>Reflect as you go.</b> After each activity, write three lines: what you did, what you learned, and how it relates to being a doctor. These notes become your personal statement and interview answers.</li>
+      <li><b>Go for depth over breadth.</b> Three to five activities you've kept up beat a dozen one-offs.</li>
+      <li><b>Aim for balance.</b> Try to have something in each area: caring, teamwork, a hobby, and something academic.</li>
+      <li><b>Keep a log.</b> Record dates, hours, what you did and a contact who can confirm it.</li>
+      <li><b>Be honest.</b> Interviewers ask follow-up questions, so only write about what you can talk about in detail.</li>
+      <li><b>Protect your wellbeing.</b> Sleep, rest and time with friends make you a stronger applicant and a better future doctor. Don't overload yourself.</li>
+      <li><b>Start in Year 12 and keep going.</b> Steady involvement over time looks much better than a rush before the deadline.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p><b>The Med Atlas</b></p>
+  <p>The Med Atlas is an independent student resource. It is not affiliated with the UCAT Consortium, UCAS, the NHS or any university. Information is provided as a guide only and may be out of date. Always confirm entry requirements, cut-offs and deadlines with each university and at ucat.ac.uk and ucas.com.</p>
+</footer>
+
+<script>
+/* ============================================================
+   0. SMALL HELPERS
+   ============================================================ */
+const $ = id => document.getElementById(id);
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+function lsGet(k,def){try{const v=localStorage.getItem(k);return v===null?def:JSON.parse(v);}catch(e){return def;}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true;}catch(e){return false;}}
+function pad(n){return String(n).padStart(2,'0');}
+
+/* ============================================================
+   1. UNIVERSITY DATA  (EDIT THIS TO KEEP THE SITE UP TO DATE)
+   n = name, r = nation
+   l = learning style: "Integrated", "PBL / case-based" or "Traditional"
+   i = short introduction to the course and teaching style
+   c = lowest UCAT score invited to interview, 2026 entry, out of 2700
+       (null = no published figure on the new scale)
+   t = "min" if c is a published minimum rather than a lowest invited score
+   k = average UCAT score of those invited (null if not published)
+   p = PREDICTED lowest score (estimate only), py = how it was worked out
+   y = who/what the number applies to
+   m = how UCAT is used,  s = SJT,  g = GCSEs,  a = A-levels
+   x = extra note
+   ============================================================ */
+const UNIS = [
+ {n:"Aberdeen",r:"Scotland",l:"Integrated",i:"A Scottish city medical school with an integrated, systems-based course. Patient contact starts early, and many placements take you out to rural and remote communities.",c:1720,k:1990,y:"2026 entry, rest of UK (Scottish: 1700)",m:"Ranked with academics (UCAT about 20% of pre-interview score)",s:"Not scored",g:"Not scored (2025 entry)",a:"Predicted/achieved grades about 30% of score"},
+ {n:"Anglia Ruskin",r:"England",l:"Integrated",i:"A newer school in Chelmsford with an integrated, clinically focused course and early placements across the East of England.",c:2010,k:null,y:"2026 entry, rest of UK, no uplifts",m:"All applicants ranked by UCAT, top group interviewed",s:"Band 4 rejected",g:"Minimum grades screen",a:"Predicted AAA needed",x:"Uplifts for East of England and Essex residents."},
+ {n:"Aston",r:"England",l:"PBL / case-based",i:"A newer Birmingham school that leans on small-group, case-based learning, with a strong focus on teamwork alongside other health professionals.",c:null,k:null,y:"",m:"Combined with GCSEs (UCAT worth 12 of 36 points)",s:"Not scored",g:"Scored (best 6 GCSEs)",a:"Only achieved A-levels are scored",x:"No figure published on the 2700 scale yet."},
+ {n:"Barts (Queen Mary)",r:"England",l:"Integrated",i:"A large London school with an integrated course and patient contact from early on, in one of the most diverse communities in the UK.",c:2030,k:null,y:"2026 entry, home",m:"Must be at or above the 4th decile, then ranked with UCAS tariff",s:"Band 4 rejected; Band 1 gets 2 points",g:"Not ranked",a:"UCAS tariff added to UCAT"},
+ {n:"Birmingham",r:"England",l:"Integrated",i:"A big, established school combining lectures with small-group, case-based sessions and early clinical contact across a large hospital network.",c:null,k:null,y:"",m:"Combined score: 45% GCSEs, 40% UCAT, 15% contextual. No minimum",s:"Used at interview (Band 1 gets most points)",g:"Scored (45% of score)",a:"Not ranked at shortlisting",x:"Top UCAT decile needed roughly 2220 to score full UCAT points."},
+ {n:"Brighton & Sussex",r:"England",l:"PBL / case-based",i:"Known for small-group, case-based learning, early clinical contact and a close-knit feel, with placements across Sussex.",c:1990,k:null,y:"2026 entry, home",m:"Ranks applicants; contextual applicants ranked separately",s:"Band 4 rejected",g:"Check university",a:"Check university"},
+ {n:"Bristol",r:"England",l:"Integrated",i:"An integrated, spiral course that revisits topics in greater depth each year, mixing lectures, small groups and early clinical experience.",c:2240,k:null,y:"2026 entry, home (international: 2270)",m:"100% UCAT ranking once minimum grades are met",s:"Not used for shortlisting",g:"Minimum only, not weighted",a:"Minimum only, not weighted"},
+ {n:"Cambridge",r:"England",l:"Traditional",i:"A science-first course: three years of preclinical study with small-group college supervisions, then clinical training. Strong on research and depth of understanding.",c:null,k:null,y:"",m:"UCAT used for the first time in 2025 entry",s:"Check university",g:"Check university",a:"Check university",x:"Average offer-holder scores in 2026 ranged from about 2160 to 2440 depending on college."},
+ {n:"Cardiff",r:"Wales",l:"Integrated",i:"An integrated course with early clinical placements, student-selected projects and a strong link to healthcare in Wales.",c:1880,k:2017,y:"2026 entry, home (Wales: 1520)",m:"Mainly a tie-breaker when many have top GCSEs",s:"Not looked at",g:"Main filter (points out of 27)",a:"Achieved A-levels give up to 3 points"},
+ {n:"Dundee",r:"Scotland",l:"Integrated",i:"An integrated course known for hands-on anatomy teaching and strong clinical skills training, in a compact Scottish city.",c:null,k:null,y:"",m:"Combined with academics (about 60% academic, 40% UCAT)",s:"Not considered",g:"Scored with predicted grades",a:"Predicted grades count",x:"No medicine figure published on the 2700 scale yet."},
+ {n:"Edinburgh",r:"Scotland",l:"Integrated",i:"A research-led, integrated course with early clinical contact and time for student-selected projects, at one of the UK's oldest medical schools.",c:1850,t:"min",k:null,y:"Published minimum cut-off (2026 entry minimum was 1650)",m:"Hard minimum, then scored by decile (17.5% of application score)",s:"Band 4 rejected; banding scored (7.5%)",g:"Best 8 scored (7/A or above in core subjects)",a:"Academic score is 25% of total"},
+ {n:"Exeter",r:"England",l:"Integrated",i:"An integrated course with early patient contact and placements across Devon and Cornwall, with a strong community and research focus.",c:null,k:null,y:"",m:"UCAT 25%, academics 75% of shortlisting score",s:"Check university",g:"Part of 75% academic score",a:"Part of 75% academic score",x:"No figure published on the 2700 scale yet."},
+ {n:"Glasgow",r:"Scotland",l:"PBL / case-based",i:"Known for problem-based, small-group learning alongside lectures, with early clinical contact and a large Scottish teaching-hospital network.",c:1990,k:null,y:"2026 entry, rest of UK (Scottish: 1870)",m:"Ranks applicants who meet screening criteria",s:"Not considered",g:"Minimum academic criteria",a:"Rest of UK needs minimum predicted AAA"},
+ {n:"Hull York",r:"England",l:"PBL / case-based",i:"Runs a small-group, problem-based course with early clinical contact and a strong focus on community and primary care across Hull, York and the surrounding area.",c:null,k:null,y:"",m:"Points: up to 35 for UCAT decile, 35 GCSEs, 15 SJT, 15 contextual",s:"Band 4 rejected; up to 15 points",g:"Up to 35 points (best 6)",a:"Minimum requirements only",x:"No fixed UCAT cut-off."},
+ {n:"Imperial College London",r:"England",l:"Integrated",i:"A science- and research-led course with a BSc built into the programme and clinical teaching across London hospitals.",c:2320,k:null,y:"2026 entry, non-WP (contextual: 2170)",m:"Ranks to invite roughly the top third",s:"Band 4 rejected",g:"Check university",a:"Predicted/achieved grades considered"},
+ {n:"Keele",r:"England",l:"Integrated",i:"A small, friendly school with early clinical placements in the community and hospitals, and a strong focus on primary care.",c:1700,t:"min",k:null,y:"Published minimum, 2026 entry, UK (international: 1950)",m:"Quintile points plus a scored personal statement (out of 25)",s:"Band 4 rejected; Band 1 gets 2 points",g:"Check university",a:"Check university",x:"Personal statement is worth 15 of 25 points."},
+ {n:"Kent & Medway",r:"England",l:"Integrated",i:"A newer school (first students in 2020) with early clinical exposure, a community focus and small-group learning.",c:null,k:null,y:"",m:"Minimum threshold set each year",s:"Band 4 rejected (Band 3+ needed in 2025)",g:"Check university",a:"Predicted A-levels not used",x:"Latest published threshold (2490) was on the old 3600 scale, so it can't be compared."},
+ {n:"King's College London",r:"England",l:"Integrated",i:"A large London school with an integrated, systems-based course, early clinical contact and plenty of research and intercalation options.",c:null,k:null,y:"",m:"Ranked with GCSEs and widening participation indicators; no minimum",s:"Not taken into account",g:"Count towards ranking (min grade 6 in English and Maths)",a:"Checked against entry requirements, not ranked"},
+ {n:"Lancaster",r:"England",l:"Integrated",i:"An integrated, patient-focused course with early clinical contact and placements across Lancashire and Cumbria.",c:1920,k:null,y:"2026 entry, non-WP (WP: 1870)",m:"Ranks all applicants who meet entry requirements",s:"Check university",g:"Check university",a:"Check university"},
+ {n:"Leeds",r:"England",l:"Integrated",i:"A large, established school combining lectures, small-group teaching and early clinical contact in a big-city teaching-hospital setting.",c:null,k:null,y:"",m:"Combined with academics; no pre-set cut-off",s:"Check university",g:"Scored with UCAT",a:"Predicted/achieved assessed",x:"No figure published on the 2700 scale yet."},
+ {n:"Leicester",r:"England",l:"Integrated",i:"An integrated course with early patient contact, set in one of the UK's most diverse patient populations.",c:1820,k:2051,y:"2026 entry, home",m:"50% of pre-interview score; bottom two deciles not considered",s:"Band 4 rejected",g:"50% of pre-interview score (8 GCSEs)",a:"Bonus points for extra A* if achieved"},
+ {n:"Lincoln",r:"England",l:"Integrated",i:"A newer school (opened 2019) with an integrated course and a focus on community and rural healthcare in Lincolnshire.",c:null,k:null,y:"",m:"Combined with GCSEs (15 points UCAT, 15 points SJT)",s:"Band 4 rejected; up to 15 points",g:"Up to 30 points (best 6)",a:"Check university"},
+ {n:"Liverpool",r:"England",l:"PBL / case-based",i:"An early UK adopter of problem-based learning, now an integrated course with small-group work and early clinical contact.",c:1960,k:null,y:"2026 entry, home (international: 2080)",m:"Ranks applicants, then checks minimum academics",s:"Band 4 rejected for home applicants",g:"Minimum 15 points from best 9",a:"Check university"},
+ {n:"Manchester",r:"England",l:"PBL / case-based",i:"One of the UK's largest schools, known for problem-based learning with early patient contact and placements across Greater Manchester.",c:2060,k:2193,y:"2026 entry, non-WP (WP: 1960)",m:"Threshold set each year (top four deciles)",s:"Band 1 or 2 preferred; Band 3/4 likely rejected",g:"Minimum requirements",a:"Minimum predicted grades required"},
+ {n:"Newcastle",r:"England",l:"Integrated",i:"An integrated course with strong small-group learning, early clinical contact and a large teaching-hospital network in the North East.",c:null,k:null,y:"",m:"Points out of 100: up to 60 UCAT, 40 GCSEs",s:"Band 4 rejected; used in interview scoring",g:"Up to 40 points (best 8)",a:"AAA; achieved A-levels can replace GCSE score",x:"Selection uses combined points, not a single UCAT figure."},
+ {n:"Norwich (UEA)",r:"England",l:"Integrated",i:"A community-focused, integrated course with early patient contact and small-group, case-based learning.",c:null,k:null,y:"",m:"No cut-off; ranks for interview and again for offers",s:"Included in interview score",g:"Check university",a:"Check university"},
+ {n:"Nottingham",r:"England",l:"Integrated",i:"A science-strong, integrated course with a research-focused BMedSci degree as part of the programme alongside clinical training.",c:null,k:null,y:"",m:"Points out of 82: UCAT 50 (Verbal Reasoning double), GCSEs 32",s:"Band 4 rejected; up to 10 points",g:"Up to 32 points (8 GCSEs)",a:"Predicted A-levels not scored"},
+ {n:"Oxford",r:"England",l:"Traditional",i:"A science-first course with three years of preclinical study taught through college tutorials and dissection-based anatomy, then clinical training. Strong research focus.",c:null,k:null,y:"",m:"Combined UCAT and GCSE score for shortlisting",s:"Check university",g:"Part of shortlisting score",a:"Check university",x:"Average invited score 2026: about 2378 (home). Average offer: about 2407."},
+ {n:"Plymouth",r:"England",l:"Integrated",i:"An integrated, clinically immersive course with early patient contact and placements across Devon and Cornwall.",c:null,k:null,y:"",m:"Holistic with GCSEs and A-levels",s:"Not used (2023 entry)",g:"Part of holistic score",a:"Part of holistic score",x:"No figure published on the 2700 scale yet."},
+ {n:"Queen's Belfast",r:"Northern Ireland",l:"Integrated",i:"An integrated course combining lectures, small groups and early clinical contact, with training in the Northern Ireland health service.",c:null,k:null,y:"",m:"UCAT worth 9 of 45 points (20%), GCSEs 36 points",s:"Only for borderline applicants",g:"Up to 36 points (best 9)",a:"Achieved grades meeting requirements"},
+ {n:"Sheffield",r:"England",l:"Integrated",i:"An integrated, case-based course with early clinical contact and strong clinical skills teaching.",c:2120,k:null,y:"2026 entry, home (published minimum 1800)",m:"Must pass minimum, then ranked by UCAT",s:"Counted as a ninth interview station (up to 5 points)",g:"Minimum academic requirement",a:"No compensation between grades and UCAT"},
+ {n:"Southampton",r:"England",l:"Integrated",i:"An integrated course with early clinical contact, student-selected projects and a research-informed approach.",c:null,k:null,y:"",m:"Ranks for Selection Day invitation",s:"Not used",g:"Check university",a:"Check university",x:"Latest figure (2760) was on the old 3600 scale, so it can't be compared."},
+ {n:"St Andrews",r:"Scotland",l:"Traditional",i:"A science-first three-year preclinical degree in a small coastal town, after which students move to a partner medical school for their clinical years.",c:null,k:null,y:"",m:"Ranked by UCAT, roughly top 500 interviewed",s:"Check university",g:"Minimum requirements",a:"Minimum requirements",x:"Widening participation applicants get a 10% uplift."},
+ {n:"St George's, London",r:"England",l:"Integrated",i:"A specialist health-sciences university with an integrated course, early patient contact and a strong emphasis on communication skills.",c:1880,k:null,y:"2026 entry, home non-WP (international: 1640)",m:"Min 500 per section, then ranked by total",s:"Considered from 2027 entry",g:"Check university",a:"Check university"},
+ {n:"Sunderland",r:"England",l:"Integrated",i:"A newer school (opened 2019) with a community-focused, integrated course and a mission to widen access to medicine in the North East.",c:null,k:null,y:"",m:"Must be in the top eight deciles, plus work experience form",s:"Band 4 rejected",g:"Check university",a:"Predicted grades not looked at"},
+ {n:"UCL",r:"England",l:"Integrated",i:"A research-led, integrated course with early clinical contact and a BSc year as part of the six-year programme.",c:2190,k:null,y:"2026 entry, home (Access UCL: 2080)",m:"Total UCAT ranks and selects for interview",s:"Used to separate equal scores",g:"Not scored",a:"Minimum grades only"}
+];
+
+/* Extra entry-requirement and cut-off details (overwrites fields above) */
+const PATCH = {
+"Aberdeen":{a:"AAA: Chemistry + one of Biology/Maths/Physics + one other subject (Highers: AAAAB)",g:"English and Maths at 6/B+ required (Biology and Physics recommended); not scored"},
+"Anglia Ruskin":{a:"AAA (ABB for WAMS): Chemistry or Biology + one of Biology/Chemistry/Maths/Physics/Psychology",g:"Four GCSEs at 5/B+ incl. Maths, English Language and two sciences"},
+"Aston":{a:"A*AA (AAB contextual): Chemistry + Biology + a third subject, with the A* in Chemistry or Biology",g:"Six GCSEs at 6/B+ incl. English Language, Maths, Chemistry, Biology; best six scored",k:1982,p:1810,py:"2025 entry lowest invited was 2460/3600, minus 650. Average invited 2026 (home): 1982"},
+"Barts (Queen Mary)":{a:"A*AA (A* in any subject): Chemistry or Biology + a further science + any third subject",g:"Six GCSEs at 777666 incl. Biology, Chemistry, English, Maths; not ranked",x:"Minimum UCAT 1761 (4th decile). 2026 interview cut-off: home 2030, overseas 2170."},
+"Birmingham":{c:1920,k:2189,y:"2026 entry, standard applicants invited (contextual lowest: 1710)",a:"AAA: Chemistry + one of Biology/Physics/Maths + any third (no General Studies, Critical Thinking or EPQ)",g:"Biology, Chemistry, Maths, English Language at 6/B+; best GCSEs scored (45% of total)",x:"No minimum cut-off. Combined score, so strong GCSEs can offset a lower UCAT. Median invited 2026: 2180."},
+"Brighton & Sussex":{a:"AAA (AAB contextual): Biology or Chemistry + one of Biology/Chemistry/Maths/Physics + any third",g:"English and Maths at 5/C+ only; no other GCSEs considered"},
+"Bristol":{a:"AAA (ABB contextual): Chemistry + one of Biology/Physics/Maths/Further Maths",g:"Maths at 7/A and English at 4/C minimum"},
+"Cambridge":{a:"A*A*A typical (one source says A*AA, so check your college): Chemistry + one or two of Maths/Biology/Physics/Further Maths",g:"No set GCSE requirements; colleges vary",s:"Not used"},
+"Cardiff":{a:"AAA (not lowered for contextual): Biology or Chemistry + a second science + a third academic subject",g:"6/B in English/Welsh and Maths; 7/A in Biology and Chemistry; four others at 6/B; best 8 scored"},
+"Dundee":{a:"AAA (ABB widening access): Chemistry or Biology + another science (Maths counts)",g:"Biology and Chemistry at 7/A; Maths at 6/B if not taken at A-level",p:1820,py:"2024 entry rest-of-UK lowest invited was 2470/3600, minus 650"},
+"Edinburgh":{a:"AAA: Chemistry + one of Biology/Maths/Physics",g:"Biology, Chemistry, English, Maths at 7/A (Double Science at 77 can replace the sciences)"},
+"Exeter":{a:"A*AA (AAB contextual): Chemistry (A) + Biology (A) + a third subject (no General Studies)",g:"English Language minimum (sources differ between 4 and 6/B, so check)",x:"UCAT and academics weighted 1:3. Full marks need 3 A* and a 9th-decile UCAT."},
+"Glasgow":{a:"AAA (Highers: AAAAB + BB Advanced): Chemistry + one of Biology/Physics/Maths; no resits",g:"English at 6/B; Biology at 6/B if not at A-level"},
+"Hull York":{a:"AAA (AAB + A in EPQ if firm choice): Biology + Chemistry + a third subject",g:"Six GCSEs at 4-9 incl. English Language and Maths at 6/B+; best six scored (35 points)"},
+"Imperial College London":{a:"A*AA (A* in Biology or Chemistry): Biology + Chemistry + a third subject at A",g:"English at 6/B"},
+"Keele":{a:"A*AA (or AAA with an A in EPQ): Biology or Chemistry + one more science/Economics/Maths/Psychology",g:"Five GCSEs at 7/A; 6/B+ in English Language, Maths, Biology, Chemistry, Physics"},
+"Kent & Medway":{a:"AAA-AAB: Chemistry or Biology + two further subjects; one sitting; predicted grades not used",g:"Five GCSEs at 6/B+ incl. English, Maths, Biology, Chemistry, Physics (or Double Science + one other)",p:1840,py:"2025 entry threshold was 2490/3600 (47th centile), minus 650"},
+"King's College London":{a:"A*AA: Chemistry + Biology (both at A)",g:"English Language and Maths at 6/B+"},
+"Lancaster":{a:"AAA: two of Biology/Chemistry/Psychology + a third subject; one sitting",g:"13 points from 8 GCSEs (7-9 = 2 points, 6 = 1); 6/B+ in sciences, English and Maths",s:"Band 4 rejected"},
+"Leeds":{c:1900,y:"2026 entry, UK (WP: 1810; international: 2020)",a:"AAA (ABB via Access to Leeds): Chemistry + Biology + a third subject",g:"Six GCSEs at 6/B+ incl. Maths, English Language, Biology, Chemistry; 8 GCSEs scored",x:"No pre-set cut-off; a strong academic score can offset a lower UCAT."},
+"Leicester":{a:"A*AA, or AAA + B in EPQ/4th AS (predicted AAB minimum): Chemistry or Biology + one of Biology/Chemistry/Physics/Maths/Psychology",g:"6/B in English Language, Maths and two sciences; 8 GCSEs scored"},
+"Lincoln":{a:"AAA typical (AAB if Lincoln is your firm choice, check): Chemistry + Biology",g:"Six GCSEs at 7/A+; 6/B+ in English and Maths; best six scored"},
+"Liverpool":{a:"AAA (or A*AB): Chemistry + one of Biology/Physics/Maths + a third subject; one sitting",g:"Nine GCSEs at 6/B+; at least 15 points from best nine (7-9 = 2, 6 = 1)"},
+"Manchester":{a:"AAA (AAB contextual): Biology/Human Biology or Chemistry + one of Chemistry/Biology/Physics/Psychology/Maths",g:"Seven GCSEs at 7/A+; English Language and Maths at 6/B; two sciences at 6/B"},
+"Newcastle":{a:"AAA predicted (ABB contextual): Biology or Chemistry + one of Biology/Chemistry/Maths/Further Maths/Statistics/Physics",g:"No set grades; best 8 scored (up to 40 points)"},
+"Norwich (UEA)":{a:"AAA: Biology/Human Biology or Chemistry + two further subjects",g:"Six GCSEs at 6/B+ incl. English Language, Maths and two sciences; not scored",k:2012,x:"Average UCAT invited to interview 2026: 2012. Average of those given offers: 2067."},
+"Nottingham":{a:"AAA (AAB/ABB contextual): Biology + Chemistry + a third subject",g:"Biology and Chemistry at 7/A; Maths and English Language at 6/B; 8 GCSEs scored"},
+"Oxford":{a:"A*AA: Chemistry + one of Biology/Physics/Maths/Further Maths",g:"No fixed grades; mostly 8s and 9s is competitive",k:2378},
+"Plymouth":{a:"A*AA to AAB (AAB widening access): Biology (A) + one of Chemistry/Physics/Maths/Psychology (A)",g:"Seven GCSEs at 4/C+ incl. English, Maths and two sciences",p:1950,py:"2025 entry home cut-off was 2600/3600, minus 650"},
+"Queen's Belfast":{a:"A*AA with Chemistry + Biology; other combinations need more (check); or AAA + A in a 4th AS",g:"Best nine GCSEs scored (A*/9 = 4 points); Maths and Physics/Double Science at 4/C+",x:"2026 entry: 32 of 45 combined points needed for interview."},
+"Sheffield":{a:"AAA (AAB + A in EPQ if firm choice): Chemistry or Biology + a second science",g:"Five GCSEs at 7/A; 6/B+ in Maths, English Language, sciences"},
+"Southampton":{a:"AAA (AAB contextual): Biology + one other science, Psychology, Sociology, Environmental Studies or Geography",g:"Seven GCSEs at 6/B+ incl. English Language, Maths, Biology and Chemistry (or Combined/Double Science)",p:2110,py:"2025 entry lowest invited was 2760/3600, minus 650"},
+"St Andrews":{c:1640,y:"2026 entry, UK (Scottish/home funded: 1500; overseas: 1710)",m:"Ranked by UCAT; roughly the top 650 invited to interview",a:"AAA (minimum AAB): Chemistry + one of Biology/Maths/Physics",g:"Five GCSEs at 7/A in one sitting; Biology, Maths, English at 5/B+ if not at A-level"},
+"St George's, London":{a:"AAA minimum (offers can reach A*AA): Chemistry + Biology/Human Biology",g:"Five GCSEs at 6/B+ incl. English Language, Maths, Science"},
+"Sunderland":{a:"AAA (AAB/ABB contextual): Biology or Chemistry + one of Biology/Chemistry/Physics/Maths",g:"Five GCSEs at 7/A; 6/B+ in English Language, Maths, Biology, Chemistry, Physics",p:1670,py:"2025 entry equivalent published by Sunderland (top eight deciles)"},
+"UCL":{a:"A*AA (AAB contextual): Biology + Chemistry, with one at A*",g:"6/B in English Language and Maths"}
+};
+UNIS.forEach(u => Object.assign(u, PATCH[u.n] || {}));
+
+/* Interview format for each school (from a 2026 listing; check each uni) */
+const IV = {
+"Aberdeen":"MMI","Anglia Ruskin":"MMI","Aston":"MMI","Barts (Queen Mary)":"Panel","Birmingham":"MMI","Brighton & Sussex":"MMI","Bristol":"MMI (online)","Cambridge":"Panel (MMI for A101)","Cardiff":"MMI","Dundee":"Group task + interview","Edinburgh":"MMI","Exeter":"MMI","Glasgow":"Panel","Hull York":"MMI","Imperial College London":"MMI","Keele":"Panel (online)","Kent & Medway":"MMI","King's College London":"MMI","Lancaster":"MMI","Leeds":"MMI","Leicester":"MMI","Lincoln":"MMI","Liverpool":"MMI","Manchester":"MMI","Newcastle":"MMI","Norwich (UEA)":"MMI","Nottingham":"MMI","Oxford":"Panel","Plymouth":"MMI","Queen's Belfast":"MMI","Sheffield":"MMI (home)","Southampton":"Panel + group task","St Andrews":"MMI","St George's, London":"MMI","Sunderland":"MMI","UCL":"MMI"
+};
+UNIS.forEach(u => { u.iv = IV[u.n] || 'Check university'; });
+
+/* ============================================================
+   2. UCAT RESOURCES (add more by copying a line)
+   cost: "Free", "Paid" or "Mixed"
+   ============================================================ */
+const UR = [
+ {t:"Official UCAT website",cost:"Free",d:"The official source for free practice tests, question banks, tutorials and the real test interface. Also has test dates, fees, registration and bursary information. Start here before paying for anything.",l:"https://www.ucat.ac.uk"},
+ {t:"TheUKCATPeople free skills trainer",cost:"Free",d:"Free timed question practice, a full-length UCAT mock with a score, and a study plan builder. A good free extra once you've used the official material.",l:"https://ucat.theukcatpeople.co.uk"},
+ {t:"MedEntry free trial",cost:"Free",d:"Free trial of an online question bank with a practice exam and feedback. Paid plans are optional, and you don't need a card for the trial.",l:"https://www.medentry.co.uk/free"},
+ {t:"The Medic Portal UCAT guide",cost:"Mixed",d:"Free UCAT guides, section-by-section advice and webinars. Paid courses and question banks are optional extras.",l:"https://www.themedicportal.com/application-guide/ucat/"},
+ {t:"TheUKCATPeople",cost:"Mixed",d:"A long-running UCAT site with free guides, deciles and university information, plus paid tutoring and courses.",l:"https://www.theukcatpeople.co.uk"},
+ {t:"Medify",cost:"Mixed",d:"Online question bank and mock exams. Check what is free and what needs a paid plan before you sign up.",l:"https://medify.co"},
+ {t:"Medic Mentor",cost:"Mixed",d:"Free webinars, guides and events alongside paid UCAT courses. Useful for hearing from current medical students.",l:"https://www.medicmentor.co.uk"},
+ {t:"GMC professional standards",cost:"Free",d:"The General Medical Council's guidance on good professional behaviour. Reading it helps with the Situational Judgement section and with interview questions on ethics.",l:"https://www.gmc-uk.org/professional-standards"},
+ {t:"The Student Room",cost:"Free",d:"Forums where applicants share UCAT experiences and tips. Treat advice as opinion, check facts against official sources, and never share personal details.",l:"https://www.thestudentroom.co.uk"}
+];
+
+/* ============================================================
+   3. MMI RESOURCES (add more by copying a line)
+   ============================================================ */
+const MR = [
+ {t:"The Medic Portal: MMI guide",cost:"Free",d:"Plain-English guide to how MMIs work, the types of station and how to prepare.",l:"https://www.themedicportal.com/application-guide/medical-school-interview/mmi-interviews/"},
+ {t:"TheUKCATPeople: MMI preparation guide",cost:"Free",d:"A detailed walkthrough of MMI stations, with preparation tips and example scenarios.",l:"https://www.theukcatpeople.co.uk/application-guide/interview/mmi-medicine-interview-preparation-guide"},
+ {t:"Medical ethics guide (TheUKCATPeople)",cost:"Free",d:"How to structure answers to ethics questions, with the main principles explained.",l:"https://www.theukcatpeople.co.uk/application-guide/interview/answering-medical-ethics-interview-questions"},
+ {t:"NHS hot topics (The Medic Portal)",cost:"Free",d:"Summaries of current NHS issues that often come up at interview. Always cross-check with up-to-date news.",l:"https://www.themedicportal.com/application-guide/medical-school-interview/nhs-hot-topics/"},
+ {t:"NHS hot topics (TheUKCATPeople)",cost:"Free",d:"A second set of current healthcare topics and discussion points for interview preparation.",l:"https://www.theukcatpeople.co.uk/application-guide/interview/medicine-interview-hot-topics"},
+ {t:"GMC professional standards",cost:"Free",d:"The standards doctors work to. Useful for ethics and professionalism questions.",l:"https://www.gmc-uk.org/professional-standards"},
+ {t:"The NHS Constitution",cost:"Free",d:"The principles and values of the NHS. Many interview questions link back to these.",l:"https://www.gov.uk/government/publications/the-nhs-constitution-for-england"},
+ {t:"BMA medical ethics",cost:"Free",d:"Guidance and discussion from the British Medical Association on real ethical issues doctors face.",l:"https://www.bma.org.uk"},
+ {t:"The King's Fund",cost:"Free",d:"Independent explainers on health policy and the NHS. Good for building a balanced view of healthcare issues.",l:"https://www.kingsfund.org.uk"},
+ {t:"BBC News: Health",cost:"Free",d:"Daily healthcare news to keep your knowledge of current issues up to date.",l:"https://www.bbc.co.uk/news/health"},
+ {t:"Medical Schools Council",cost:"Free",d:"Official information about how UK medical schools select students and what they look for.",l:"https://www.medschools.ac.uk"},
+ {t:"Medic Mentor interview events",cost:"Mixed",d:"Free webinars and events, plus paid interview courses. The free sessions are a good starting point.",l:"https://www.medicmentor.co.uk"}
+];
+
+/* ============================================================
+   4. WORK EXPERIENCE DATA (add more by copying a line)
+   cost: "Free", "Paid" or "Mixed"
+   ============================================================ */
+const WE = [
+ {t:"Southampton virtual medicine work experience",type:"Online",cost:"Free",d:"Live two-day programme over Microsoft Teams with University Hospital Southampton, for UK Year 12 students studying A-level Biology. Next dates: 16 and 17 February 2027. Applications open 28 December 2026 and close 5pm on 18 January 2027.",l:"https://www.southampton.ac.uk/schools-colleges/medicine-virtual-work-experience"},
+ {t:"Southampton Widening Access to Medicine",type:"In person",cost:"Free",d:"Free three-day hybrid programme (in-person taster day plus virtual work experience) for Year 12 students applying through a widening participation or contextual route. Runs 7 to 9 April 2027. Applications close Monday 7 December 2026. You need A-level Biology and one other science.",l:"https://www.southampton.ac.uk/schools-colleges/widening-access-to-medicine-residential.page"},
+ {t:"BSMS Virtual Work Experience",type:"Online",cost:"Free",d:"Free, award-winning online course from Brighton and Sussex Medical School. It introduces the NHS and six medical specialties, with reflection activities you can use in your application.",l:"https://bsmsoutreach.thinkific.com"},
+ {t:"National NHS Virtual Work Experience (Medic Mentor and UHB)",type:"Online",cost:"Free",d:"Free six-month online medicine programme with University Hospitals Birmingham, open to UK students aged 14 and over. The Medical Schools Council accepts virtual work experience as an alternative to in-person shadowing. Intake dates change, so check the site.",l:"https://medicmentor.org/university-hospitals-birmingham-trust-virtual-work-experience/"},
+ {t:"Springpod NHS virtual work experience",type:"Online",cost:"Free",d:"Free self-paced online programmes on healthcare careers, taking a few hours with a certificate at the end. Good groundwork before in-person placements.",l:"https://www.springpod.com/virtual-work-experience"},
+ {t:"Oxford University Hospitals work experience",type:"In person",cost:"Free",d:"In-person placements at Oxford hospitals. Spring 2027 placements run January to April, and summer applications open in February 2027. Check eligibility, age limits and how to apply.",l:"https://www.ouh.nhs.uk/working-for-us/sectors/work-experience/"},
+ {t:"Local NHS trust programmes (example: Mid Cheshire)",type:"In person",cost:"Free",d:"Many trusts run programmes like Aspire to be a Doctor, usually for Year 12 and 13 only. Mid Cheshire's reopen in 2027. Search your own local trust's work experience page.",l:"https://www.mcht.nhs.uk/work-us/work-experience"},
+ {t:"Observe GP",type:"Online",cost:"Free",d:"Free online platform with videos of real GP consultations and reflective questions. Popular for personal statements and interviews.",l:"https://www.observegp.com"},
+ {t:"NHS volunteering (local trust)",type:"In person",cost:"Free",d:"Most NHS hospital trusts run volunteer programmes (ward helpers, befrienders, wayfinders). Search for your nearest trust's volunteering page. Minimum ages vary, often 16+ or 18+.",l:"https://www.nhs.uk/nhs-services/hospitals/volunteering-in-hospitals/"},
+ {t:"St John Ambulance",type:"In person",cost:"Free",d:"Youth and adult volunteering with first aid training and event cover across the UK.",l:"https://www.sja.org.uk"},
+ {t:"British Red Cross",type:"In person",cost:"Free",d:"Volunteer roles in first aid, community support and shops across the UK. Good evidence of commitment and teamwork.",l:"https://www.redcross.org.uk"},
+ {t:"Hospice volunteering",type:"In person",cost:"Free",d:"Hospices welcome volunteers in many roles. Great for showing empathy and understanding of palliative care. Contact your local hospice.",l:"https://www.hospiceuk.org"},
+ {t:"Marie Curie volunteering",type:"In person",cost:"Free",d:"Volunteer roles supporting people living with terminal illness and their families, including befriending and hospice support. Check age requirements for each role.",l:"https://www.mariecurie.org.uk"},
+ {t:"Care home volunteering",type:"In person",cost:"Free",d:"Visit and support residents with activities and conversation. Contact local care homes directly. Often counts strongly for empathy.",l:"https://www.nhs.uk/conditions/social-care-and-support-guide/"},
+ {t:"Age UK volunteering",type:"In person",cost:"Free",d:"Befriending, visiting and community roles supporting older people. A strong way to build communication skills and show commitment over time.",l:"https://www.ageuk.org.uk"},
+ {t:"Mind (mental health charity)",type:"In person",cost:"Free",d:"Local Mind groups offer volunteering in shops, peer support and community projects. Useful for understanding mental health, which is relevant to every area of medicine. Check minimum ages.",l:"https://www.mind.org.uk"},
+ {t:"Samaritans",type:"In person",cost:"Free",d:"Trained volunteers support people in distress. This is for adults (18+) and involves training, so it suits students at or after the end of Year 13. Check current requirements.",l:"https://www.samaritans.org"},
+ {t:"Hospital radio",type:"In person",cost:"Free",d:"Many hospitals have a volunteer-run radio station. A friendly way to spend time on wards, talk to patients and build communication skills. Find your local station via the national association.",l:"https://www.hbauk.com"},
+ {t:"Do-it volunteering search",type:"In person",cost:"Free",d:"A national search tool for volunteering roles near you across health, care, youth work and community projects. Filter by age and interest.",l:"https://do-it.org"},
+ {t:"GP surgery or pharmacy shadowing",type:"In person",cost:"Free",d:"Ask local surgeries, pharmacies, dentists and opticians directly with a polite email or visit. Availability varies and many only accept short observation days.",l:"https://www.nhs.uk/service-search/find-a-gp"},
+ {t:"Dental practice or optician shadowing",type:"In person",cost:"Free",d:"Contact local practices to ask about observing for a day. Shows interest in healthcare more widely and gives different insight into patient care.",l:"https://www.nhs.uk/service-search/find-a-dentist"},
+ {t:"Paid healthcare support or care work",type:"In person",cost:"Paid",d:"Care assistant and healthcare support jobs are open to some 16 to 18 year olds and many adults, depending on the employer. Hands-on, paid experience of patient care is excellent evidence for your application.",l:"https://www.healthcareers.nhs.uk"},
+ {t:"Nuffield Research Placements",type:"In person",cost:"Free",d:"Year 12 students can apply for a funded summer research placement in a science, technology, engineering, maths or medical research setting. Eligibility rules apply, so check the criteria and deadlines.",l:"https://www.stem.org.uk/nuffield-research-placements"},
+ {t:"Medical school outreach and widening participation events",type:"In person",cost:"Free",d:"Many medical schools run open days, taster days and summer schools for Year 12 students. Search the outreach page of each medical school you are interested in.",l:"https://www.medschools.ac.uk"},
+ {t:"NHS Health Careers",type:"Online",cost:"Free",d:"Official NHS information on hundreds of healthcare roles, plus advice on volunteering and work experience. Good for understanding the wider healthcare team.",l:"https://www.healthcareers.nhs.uk"},
+ {t:"Medical Schools Council guidance",type:"Online",cost:"Free",d:"Official advice about what medical schools expect from work experience and how to reflect on it.",l:"https://www.medschools.ac.uk"},
+ {t:"Dementia Friends",type:"Online",cost:"Free",d:"A short, free session from the Alzheimer's Society on understanding dementia and how to support people living with it. Easy to complete and a good talking point.",l:"https://www.dementiafriends.org.uk"},
+ {t:"FutureLearn healthcare courses",type:"Online",cost:"Free",d:"Free short online courses from universities on topics like healthcare, anatomy and medical ethics. Useful for your personal statement and interviews.",l:"https://www.futurelearn.com"},
+ {t:"OpenLearn (The Open University)",type:"Online",cost:"Free",d:"Free courses and articles on health, science and caring. Self-paced, so easy to fit around school.",l:"https://www.open.edu/openlearn"},
+ {t:"The Medic Portal resources",type:"Online",cost:"Mixed",d:"Free guides, webinars and advice on work experience, applications and interviews. Some courses are paid.",l:"https://www.themedicportal.com"},
+ {t:"Medic Mentor events",type:"Online",cost:"Mixed",d:"Free webinars and events with current medical students and doctors, plus paid programmes. Free sessions are a good way to learn what the career involves.",l:"https://www.medicmentor.co.uk"},
+ {t:"InvestIN programmes",type:"Online",cost:"Paid",d:"Company-run insight and work experience programmes. These are paid, and medical schools do not require them, so compare carefully with the free options above before spending money.",l:"https://www.investin.org"},
+ {t:"Young carer or caring role",type:"In person",cost:"Free",d:"Looking after a family member or neighbour can be strong evidence of care and responsibility. You can reflect on this in your application.",l:"https://www.nhs.uk/conditions/social-care-and-support-guide/support-and-benefits-for-carers/"}
+];
+
+/* ============================================================
+   5. MMI PRACTICE QUESTIONS (original prompts; add your own)
+   ============================================================ */
+const MMI_HINTS = {
+ "Motivation and insight":"Be specific and honest. Link your reasons to real experiences such as work experience, volunteering or caring. Show you understand the realities of the job, including the downsides. Avoid clichés like \"I want to help people\" without examples.",
+ "Ethics and scenarios":"Don't rush to an answer. Identify the key issues, consider each person involved, and use ideas such as respecting the patient's choices (autonomy), doing good, avoiding harm and fairness. Mention law or guidance only if you're sure. Reach a reasoned view and accept that reasonable people disagree.",
+ "NHS and healthcare issues":"Show balanced, up-to-date awareness rather than memorised facts. Explain a problem, its causes and possible solutions, and be careful with statistics you aren't sure about. Link your points to the values of the NHS.",
+ "Teamwork and personal qualities":"Tell a clear story: the situation, what you did and what happened. Then reflect on what you learned and what you would do differently. Talk about your own actions, be honest about mistakes, and show you can take feedback.",
+ "Communication and role-play":"Introduce yourself, listen first and use plain language. Show empathy, check understanding, don't give false reassurance and don't try to diagnose. In a role-play, the actor is judging how you made them feel."
+};
+const MMI = [
+ {cat:"Motivation and insight",q:"Why do you want to be a doctor rather than another healthcare professional, such as a nurse or a pharmacist?"},
+ {cat:"Motivation and insight",q:"Tell me about a time you saw healthcare in action. What surprised you, and what did it teach you?"},
+ {cat:"Motivation and insight",q:"What do you think are the biggest challenges of being a junior doctor today?"},
+ {cat:"Motivation and insight",q:"What would you find hardest about a career in medicine, and how would you cope with it?"},
+ {cat:"Motivation and insight",q:"Describe a moment of compassion you witnessed, and explain why it mattered."},
+ {cat:"Motivation and insight",q:"Why have you chosen to apply to this medical school?"},
+ {cat:"Ethics and scenarios",q:"A patient refuses a treatment that you believe would help them. How should a doctor respond?"},
+ {cat:"Ethics and scenarios",q:"A friend tells you they have been sharing a patient's story on social media without using a name. What would you do?"},
+ {cat:"Ethics and scenarios",q:"Should doctors always tell patients the truth, even when it will upset them?"},
+ {cat:"Ethics and scenarios",q:"Should there be limits on how healthcare resources are spent, and who should decide?"},
+ {cat:"Ethics and scenarios",q:"A 15-year-old asks a doctor for confidential advice and doesn't want their parents told. What are the issues to consider?"},
+ {cat:"Ethics and scenarios",q:"Is it ever acceptable for a doctor to make a decision on behalf of a patient who can't make one for themselves?"},
+ {cat:"NHS and healthcare issues",q:"What are some of the pressures facing the NHS, and what could be done about one of them?"},
+ {cat:"NHS and healthcare issues",q:"Why do health inequalities exist, and what can doctors do about them?"},
+ {cat:"NHS and healthcare issues",q:"How is technology, including artificial intelligence, changing healthcare, and what are the risks?"},
+ {cat:"NHS and healthcare issues",q:"Why might long waiting times matter, both for patients and for the staff caring for them?"},
+ {cat:"NHS and healthcare issues",q:"Choose one of the values of the NHS and explain what it means in practice for a doctor."},
+ {cat:"Teamwork and personal qualities",q:"Tell me about a time you worked in a team and it didn't go well. What did you learn?"},
+ {cat:"Teamwork and personal qualities",q:"Describe a time you received critical feedback. What did you do with it?"},
+ {cat:"Teamwork and personal qualities",q:"Tell me about a mistake you made and how you handled it."},
+ {cat:"Teamwork and personal qualities",q:"How do you manage stress and look after yourself during busy periods?"},
+ {cat:"Teamwork and personal qualities",q:"Give an example of showing leadership without a formal title."},
+ {cat:"Communication and role-play",q:"Role-play with a partner: you are a medical student, and a patient is anxious about having a blood test and says they want to refuse it. Talk to them."},
+ {cat:"Communication and role-play",q:"Explain what a vaccine is to a worried ten-year-old, using simple language."},
+ {cat:"Communication and role-play",q:"Role-play: you share a house with a friend who isn't doing their share of the chores, and you need to raise it kindly."},
+ {cat:"Communication and role-play",q:"Role-play: a colleague seems very upset and says they are struggling. How do you respond?"},
+ {cat:"Communication and role-play",q:"Role-play: a clinic is running 90 minutes late and a waiting patient is getting frustrated. Speak to them."},
+ {cat:"Communication and role-play",q:"Explain a medical or scientific idea you find interesting to a partner who has no background in it."}
+];
+
+/* ============================================================
+   6. UNIVERSITY TABLE
+   ============================================================ */
+const uniBody = $('uniBody');
+function cellText(v){
+  return v==='Check university' ? '<span class="tag chk">Check university</span>' : esc(v);
+}
+function styleLabel(l){ return l==='Traditional' ? 'Traditional (science-first)' : l; }
+function renderUnis(){
+  const q = $('uniSearch').value.toLowerCase();
+  const reg = $('uniRegion').value;
+  const sty = $('uniStyle').value;
+  const ivf = $('uniIv').value;
+  const only = $('uniUcatOnly').checked;
+  uniBody.innerHTML = UNIS.filter(u =>
+    u.n.toLowerCase().includes(q) && (!reg || u.r===reg) && (!sty || u.l===sty) && (!ivf || (u.iv||'').includes(ivf)) && (!only || u.c)
+  ).map(u => `<tr>
+    <td data-label="University"><b>${esc(u.n)}</b> <span class="tag style">${esc(styleLabel(u.l))}</span> <span class="tag iv">${esc(u.iv)}</span><span class="intro">${esc(u.i)}</span>${u.x?`<span class="mini" style="margin-top:6px">${esc(u.x)}</span>`:''}</td>
+    <td data-label="Nation">${esc(u.r)}</td>
+    <td data-label="Lowest UCAT invited to interview">${u.c ? `<span class="num">${u.c}</span>${u.t==='min'?' <span class="tag chk">Published minimum</span>':''}<span class="mini">${esc(u.y)}</span>` : (u.p ? `<span class="num">~${u.p}</span> <span class="tag chk">Predicted</span><span class="mini">${esc(u.py)}</span>` : '<span class="tag chk">No figure on 2700 scale</span>')}</td>
+    <td data-label="Average invited">${u.k ? `<span class="num">${u.k}</span>` : '<span class="mini">Not published</span>'}</td>
+    <td data-label="How UCAT is used">${esc(u.m)}</td>
+    <td data-label="SJT">${cellText(u.s)}</td>
+    <td data-label="GCSEs">${cellText(u.g)}</td>
+    <td data-label="A-levels">${cellText(u.a)}</td>
+  </tr>`).join('') || '<tr><td colspan="8">No universities match.</td></tr>';
+}
+['uniSearch','uniRegion','uniStyle','uniIv','uniUcatOnly'].forEach(id=>$(id).addEventListener('input',renderUnis));
+renderUnis();
+
+/* ============================================================
+   7. LEADERBOARD (scores out of 2700)
+   Chart axis runs 1500 to 2500; scores outside it sit at the edge.
+   Published figures are ranked first. Everything else is listed below.
+   ============================================================ */
+const MIN = 1500, MAX = 2500;
+const board = $('board'), boardOther = $('boardOther');
+const myScore = $('myScore'), myRange = $('myRange');
+function pct(v){ return Math.max(0, Math.min(100, (v-MIN)/(MAX-MIN)*100)); }
+function statusFor(score,low,avg){
+  const comfortable = avg ? avg : low+100;
+  if(score>=comfortable) return {colour:'var(--green)',label:'Well above'};
+  if(score>=low) return {colour:'var(--amber)',label:'Above'};
+  return {colour:'var(--red)',label:'Below'};
+}
+function barRow(rank,name,val,avg,score,s,isPred){
+  return `<div class="row${isPred?' pred':''}" role="listitem" aria-label="${esc(name)}: ${val}, ${s.label}">
+    <div class="rank">${rank}</div>
+    <div class="name" title="${esc(name)}">${esc(name)}</div>
+    <div class="track">
+      <div class="bar" style="width:${pct(val)}%;background-color:${s.colour}"></div>
+      ${avg?`<div class="comp" style="left:${pct(avg)}%" title="Average invited ${avg}"></div>`:''}
+      <div class="me" style="left:${pct(score)}%"></div>
+    </div>
+    <div class="val">${isPred?'~':''}${val}<span class="st">${s.label}</span></div>
+  </div>`;
+}
+function noneRow(u){
+  return `<div class="row none" role="listitem" aria-label="${esc(u.n)}: no single UCAT cut-off">
+    <div class="rank">&ndash;</div>
+    <div class="name" title="${esc(u.n)}">${esc(u.n)}</div>
+    <div class="track"><span class="note">${esc(u.m)}${u.x?' ('+esc(u.x)+')':''}</span></div>
+    <div class="val">${u.k?'Avg '+u.k:'n/a'}<span class="st">${u.k?'Avg invited':'No figure'}</span></div>
+  </div>`;
+}
+function renderBoard(){
+  const raw = Number(myScore.value);
+  const score = Math.max(900, Math.min(2700, raw || 900));
+  const pub = UNIS.filter(u=>u.c).sort((a,b)=>b.c-a.c);
+  const pred = UNIS.filter(u=>!u.c && u.p).sort((a,b)=>b.p-a.p);
+  const none = UNIS.filter(u=>!u.c && !u.p).sort((a,b)=>a.n.localeCompare(b.n));
+  let green=0, above=0;
+  board.innerHTML = pub.map((u,i)=>{
+    const s = statusFor(score,u.c,u.k);
+    if(s.label==='Well above'){green++;above++;} else if(s.label==='Above'){above++;}
+    return barRow(String(i+1), u.n+(u.t==='min'?' (min)':''), u.c, u.k, score, s, false);
+  }).join('');
+  boardOther.innerHTML =
+    pred.map(u=>barRow('\u2013', u.n+' (predicted)', u.p, u.k, score, statusFor(score,u.p,u.k), true)).join('') +
+    none.map(noneRow).join('');
+  $('boardSummary').textContent = raw
+    ? `With ${score}, you are at or above last year's lowest invited score (or published minimum) at ${above} of ${pub.length} universities with a published figure, and well above it at ${green}. ${pred.length+none.length} more schools are listed in the second box (${pred.length} with a rough predicted figure).`
+    : 'Enter your total UCAT score to see where you stand.';
+}
+myScore.addEventListener('input',()=>{ if(myScore.value!=='') myRange.value=myScore.value; renderBoard(); });
+myRange.addEventListener('input',()=>{myScore.value=myRange.value;renderBoard();});
+renderBoard();
+
+/* ============================================================
+   8. UCAT CALCULATOR
+   2026 national benchmarks (out of 2700): average 1918,
+   top decile from 2250. Check these against the UCAT website.
+   ============================================================ */
+const NAT_AVG = 1918;
+const DECILES = [1590,1700,1780,1850,1920,1980,2050,2140,2250];
+$('calcBtn').addEventListener('click',()=>{
+  const vals=['vr','dm','qr'].map(id=>Number($(id).value));
+  const out=$('calcResult');
+  out.hidden=false;
+  if(vals.some(v=>!v||v<300||v>900)){out.innerHTML='<b>Please enter all three scores between 300 and 900.</b>';return;}
+  const total=vals.reduce((a,b)=>a+b,0);
+  const avg=Math.round(total/3);
+  const band=$('sjt').value;
+  const withFigure=UNIS.filter(u=>u.c);
+  const ok=withFigure.filter(u=>total>=u.c).length;
+  const d=DECILES.filter(x=>total>=x).length;
+  const where = d===0 ? 'below the 10th percentile' : d===9 ? 'in the top 10% nationally' : 'at or above roughly the '+(d*10)+'th percentile';
+  const vsAvg = total>=NAT_AVG ? (total-NAT_AVG)+' points above' : (NAT_AVG-total)+' points below';
+  out.innerHTML=`<div class="big">${total}</div>
+    <div>Total (out of 2700) &middot; Average per section: <b>${avg}</b> &middot; SJT: <b>Band ${band}</b></div>
+    <p class="small">Your score is ${where} (2026 figures) and ${vsAvg} the national average of ${NAT_AVG}. You are at or above last year's lowest invited score (or published minimum) at ${ok} of ${withFigure.length} universities with a published figure.${band==='4'?' Many universities automatically reject SJT Band 4, so check the table before choosing.':''}</p>
+    <button class="btn solid" id="useScore" type="button">Show me on the leaderboard</button>`;
+  $('useScore').addEventListener('click',()=>{
+    myScore.value=total; myRange.value=total; renderBoard();
+    $('leaderboard').scrollIntoView();
+  });
+});
+
+const RAW=[['Verbal Reasoning',44],['Decision Making',35],['Quantitative Reasoning',36],['Situational Judgement',69]];
+$('rawRows').innerHTML=RAW.map((r,i)=>
+ `<div class="field"><label for="raw${i}">${r[0]} (out of ${r[1]})</label><input type="number" id="raw${i}" min="0" max="${r[1]}" placeholder="Marks correct"></div>`).join('');
+$('rawBtn').addEventListener('click',()=>{
+  const out=$('rawResult'); out.hidden=false;
+  let html='';
+  RAW.forEach((r,i)=>{
+    const v=$('raw'+i).value;
+    if(v==='') return;
+    const n=Math.max(0,Math.min(r[1],Number(v)));
+    html+=`<div>${r[0]}: <b>${Math.round(n/r[1]*100)}%</b> (${n}/${r[1]})</div>`;
+  });
+  out.innerHTML = html || 'Enter at least one section.';
+});
+
+/* ============================================================
+   9. RESOURCE LISTS (UCAT and MMI)
+   ============================================================ */
+function cardList(list){
+  return list.map(r=>`<div class="card we">
+    <span class="tag">${esc(r.cost)}</span>
+    <h3>${esc(r.t)}</h3>
+    <p>${esc(r.d)}</p>
+    <p><a href="${esc(r.l)}" target="_blank" rel="noopener noreferrer">Visit website &rarr;</a></p>
+  </div>`).join('');
+}
+$('urGrid').innerHTML = cardList(UR);
+$('mrGrid').innerHTML = cardList(MR);
+
+/* ============================================================
+   10. REVISION TRACKER (saved in this browser only)
+   ============================================================ */
+const REV_SECTIONS = ['Verbal Reasoning','Decision Making','Quantitative Reasoning','Situational Judgement','Full mock exam','Reviewing mistakes','MMI / interview practice','A-level revision','Other'];
+function dateKey(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+function parseKey(k){const p=k.split('-').map(Number);return new Date(p[0],p[1]-1,p[2]);}
+function fmtTime(secs){
+  secs=Math.round(secs);
+  if(secs<60) return secs+'s';
+  const h=Math.floor(secs/3600), m=Math.floor((secs%3600)/60);
+  return h>0 ? h+'h '+pad(m)+'m' : m+'m';
+}
+function fmtClock(s){s=Math.floor(s);return pad(Math.floor(s/3600))+':'+pad(Math.floor((s%3600)/60))+':'+pad(s%60);}
+
+let revLog = lsGet('medatlas_rev_log',[]);
+if(!Array.isArray(revLog)) revLog=[];
+revLog = revLog.filter(e=>e && typeof e.date==='string' && /^\d{4}-\d{2}-\d{2}$/.test(e.date) && Number(e.secs)>0)
+  .map(e=>({id:String(e.id),date:e.date,secs:Number(e.secs),section:String(e.section||'Other'),note:String(e.note||'')}));
+
+function revMsg(t){ $('revMsg').textContent=t; }
+function addEntry(date,secs,section,note){
+  secs=Math.round(secs);
+  if(!date||!(secs>0)) return false;
+  revLog.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),date:date,secs:secs,section:section,note:(note||'').slice(0,120)});
+  if(!lsSet('medatlas_rev_log',revLog)) revMsg('Added for this visit only: your browser blocked saving (private mode?).');
+  renderRev();
+  return true;
+}
+
+$('revSec').innerHTML = REV_SECTIONS.map(s=>`<option>${esc(s)}</option>`).join('');
+$('revDate').value = dateKey(new Date());
+$('revDate').max = dateKey(new Date());
+
+/* Stopwatch (uses timestamps, so it survives a locked phone or a reload) */
+let timer = lsGet('medatlas_rev_timer',{running:false,startedAt:0,acc:0});
+if(!timer || typeof timer!=='object') timer={running:false,startedAt:0,acc:0};
+function timerElapsed(){ return (Number(timer.acc)||0) + (timer.running ? (Date.now()-timer.startedAt)/1000 : 0); }
+function saveTimer(){ lsSet('medatlas_rev_timer',timer); }
+function updateTimerUI(){
+  $('revClock').textContent = fmtClock(timerElapsed());
+  $('revStart').textContent = timer.running ? 'Pause' : (timerElapsed()>0 ? 'Resume' : 'Start');
+}
+$('revStart').addEventListener('click',()=>{
+  if(timer.running){ timer.acc=timerElapsed(); timer.running=false; }
+  else { timer.startedAt=Date.now(); timer.running=true; }
+  saveTimer(); updateTimerUI(); revMsg('');
+});
+$('revStop').addEventListener('click',()=>{
+  const secs=timerElapsed();
+  if(secs<10){ revMsg('That session is too short to save. Keep going, or use "Add time" instead.'); return; }
+  if(addEntry(dateKey(new Date()),secs,$('revSec').value,$('revNote').value.trim())){
+    timer={running:false,startedAt:0,acc:0}; saveTimer(); updateTimerUI();
+    $('revNote').value=''; revMsg('Saved: '+fmtTime(secs)+' of '+$('revSec').value+'.');
+  }
+});
+$('revReset').addEventListener('click',()=>{
+  if(timerElapsed()>=60 && !confirm('Reset the stopwatch without saving?')) return;
+  timer={running:false,startedAt:0,acc:0}; saveTimer(); updateTimerUI(); revMsg('');
+});
+setInterval(updateTimerUI,1000);
+updateTimerUI();
+
+/* Manual entry */
+$('revAdd').addEventListener('click',()=>{
+  const date=$('revDate').value, mins=Number($('revMins').value);
+  if(!date || date>dateKey(new Date())){ revMsg('Please pick a date that is today or earlier.'); return; }
+  if(!(mins>=1) || mins>720){ revMsg('Enter between 1 and 720 minutes.'); return; }
+  if(addEntry(date,mins*60,$('revSec').value,$('revNote').value.trim())){
+    $('revMins').value=''; $('revNote').value=''; revMsg('Added '+mins+' minutes of '+$('revSec').value+'.');
+  }
+});
+
+/* Goal and test date */
+$('revGoal').value = Number(lsGet('medatlas_rev_goal',5)) || 5;
+$('revGoal').addEventListener('input',()=>{ lsSet('medatlas_rev_goal',Number($('revGoal').value)||5); renderRev(); });
+$('revTest').value = lsGet('medatlas_ucat_date','') || '';
+$('revTest').addEventListener('input',()=>{ lsSet('medatlas_ucat_date',$('revTest').value); renderRev(); });
+
+function totals(){
+  const now=new Date();
+  const today=dateKey(now);
+  const ws=dateKey(new Date(now.getFullYear(),now.getMonth(),now.getDate()-((now.getDay()+6)%7)));
+  const T={today:0,week:0,all:0,streak:0,byDay:{},bySec:{}};
+  revLog.forEach(e=>{
+    T.all+=e.secs;
+    T.bySec[e.section]=(T.bySec[e.section]||0)+e.secs;
+    T.byDay[e.date]=(T.byDay[e.date]||0)+e.secs;
+    if(e.date===today) T.today+=e.secs;
+    if(e.date>=ws && e.date<=today) T.week+=e.secs;
+  });
+  const d=new Date();
+  if(!T.byDay[dateKey(d)]) d.setDate(d.getDate()-1);
+  while(T.byDay[dateKey(d)]){ T.streak++; d.setDate(d.getDate()-1); }
+  return T;
+}
+
+function renderRev(){
+  const T=totals();
+  $('revStats').innerHTML=[
+    [fmtTime(T.today),'Today'],
+    [fmtTime(T.week),'This week'],
+    [fmtTime(T.all),'All time'],
+    [T.streak+' day'+(T.streak===1?'':'s'),'Current streak']
+  ].map(s=>`<div class="stat"><b>${s[0]}</b><span>${s[1]}</span></div>`).join('');
+
+  const goal=Number($('revGoal').value)||5;
+  const p=Math.min(100,Math.round(T.week/(goal*3600)*100));
+  $('revProg').style.width=p+'%';
+  $('revProgText').textContent = fmtTime(T.week)+' of '+goal+'h this week ('+p+'%)'+(p>=100?'. Goal reached, well done!':'.');
+
+  const tv=$('revTest').value;
+  if(tv){
+    const diff=Math.round((parseKey(tv)-parseKey(dateKey(new Date())))/86400000);
+    $('revCountdown').innerHTML = diff>0 ? '<b>'+diff+' day'+(diff===1?'':'s')+'</b> until your test.' : (diff===0 ? '<b>Your test is today.</b> Good luck!' : 'Your test date has passed.');
+  } else { $('revCountdown').textContent='Add your test date to see a countdown.'; }
+
+  const names=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const days=[]; let max=1;
+  for(let i=6;i>=0;i--){
+    const d=new Date(); d.setDate(d.getDate()-i);
+    const v=T.byDay[dateKey(d)]||0;
+    days.push({n:names[d.getDay()],v:v}); max=Math.max(max,v);
+  }
+  $('revDays').innerHTML=days.map(d=>`<div class="day"><div class="dwrap"><div class="dbar" style="height:${Math.max(2,Math.round(d.v/max*100))}%" title="${fmtTime(d.v)}"></div></div>${d.n}<small>${d.v?fmtTime(d.v):''}</small></div>`).join('');
+
+  const secs=Object.keys(T.bySec).sort((a,b)=>T.bySec[b]-T.bySec[a]);
+  const smax=secs.length?T.bySec[secs[0]]:1;
+  $('revSecs').innerHTML = secs.length
+    ? secs.map(s=>`<div class="sb"><div>${esc(s)}</div><div class="t"><i style="width:${Math.round(T.bySec[s]/smax*100)}%"></i></div><div class="v">${fmtTime(T.bySec[s])}</div></div>`).join('')
+    : '<p class="small" style="margin:0">Nothing logged yet. Start the stopwatch or add some time to see your breakdown.</p>';
+
+  const rows=revLog.slice().reverse().sort((a,b)=>a.date<b.date?1:(a.date>b.date?-1:0)).slice(0,30);
+  $('revBody').innerHTML = rows.length
+    ? rows.map(e=>`<tr>
+        <td data-label="Date">${esc(e.date)}</td>
+        <td data-label="Section">${esc(e.section)}</td>
+        <td data-label="Time">${fmtTime(e.secs)}</td>
+        <td data-label="Note">${esc(e.note)||'<span class="mini">None</span>'}</td>
+        <td data-label=""><button class="del" type="button" data-id="${esc(e.id)}">Delete</button></td>
+      </tr>`).join('')
+    : '<tr><td colspan="5">No sessions logged yet.</td></tr>';
+  $('revLogNote').textContent = revLog.length>30 ? 'Showing your latest 30 of '+revLog.length+' entries. Export CSV to see them all.' : '';
+}
+$('revBody').addEventListener('click',e=>{
+  const id=e.target && e.target.getAttribute && e.target.getAttribute('data-id');
+  if(!id) return;
+  revLog=revLog.filter(x=>x.id!==id);
+  lsSet('medatlas_rev_log',revLog);
+  renderRev();
+});
+$('revClear').addEventListener('click',()=>{
+  if(!revLog.length) return;
+  if(confirm('Delete your entire revision log? This cannot be undone.')){
+    revLog=[]; lsSet('medatlas_rev_log',revLog); renderRev(); revMsg('Log cleared.');
+  }
+});
+$('revExport').addEventListener('click',()=>{
+  if(!revLog.length){ revMsg('Nothing to export yet.'); return; }
+  const q=v=>{ let s=String(v); if(/^[=+\-@]/.test(s)) s="'"+s; return '"'+s.replace(/"/g,'""')+'"'; };
+  const lines=['date,section,minutes,note'].concat(
+    revLog.slice().sort((a,b)=>a.date<b.date?-1:(a.date>b.date?1:0)).map(e=>[q(e.date),q(e.section),(e.secs/60).toFixed(1),q(e.note)].join(','))
+  );
+  const blob=new Blob([lines.join('\n')],{type:'text/csv'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download='med-atlas-revision-log.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+renderRev();
+
+/* ============================================================
+   11. MMI PRACTICE TOOL
+   ============================================================ */
+const MMI_CATS = Object.keys(MMI_HINTS);
+$('mmiCat').innerHTML = '<option value="">All question types</option>' + MMI_CATS.map(c=>`<option>${esc(c)}</option>`).join('');
+let mmiCur=null, mmiEnd=0, mmiId=null, mmiLen=300, mmiElapsed=0;
+function mmiClockText(left){ return pad(Math.floor(left/60))+':'+pad(left%60); }
+function mmiMsg(t){ $('mmiMsg').textContent=t; }
+function mmiSetLen(){ mmiLen=Number($('mmiTime').value)*60; }
+function mmiShow(q){
+  mmiCur=q;
+  $('mmiQ').textContent=q.q;
+  $('mmiCatLabel').textContent=q.cat;
+  $('mmiHints').hidden=false;
+  $('mmiHints').innerHTML='<b>What to think about:</b> '+esc(MMI_HINTS[q.cat]);
+}
+function mmiHalt(){ if(mmiId){ clearInterval(mmiId); mmiId=null; } }
+function mmiTick(){
+  const left=Math.max(0,Math.ceil((mmiEnd-Date.now())/1000));
+  mmiElapsed=mmiLen-left;
+  $('mmiClock').textContent=mmiClockText(left);
+  if(left===0){ mmiHalt(); mmiMsg("Time's up. What would you add, cut or say differently next time?"); }
+}
+function mmiPick(){
+  const cat=$('mmiCat').value;
+  const pool=MMI.filter(q=>!cat||q.cat===cat);
+  let q;
+  do { q=pool[Math.floor(Math.random()*pool.length)]; } while(pool.length>1 && q===mmiCur);
+  return q;
+}
+function mmiResetClock(){ mmiHalt(); mmiSetLen(); mmiElapsed=0; $('mmiClock').textContent=mmiClockText(mmiLen); }
+$('mmiNew').addEventListener('click',()=>{ mmiShow(mmiPick()); mmiResetClock(); mmiMsg(''); });
+$('mmiTime').addEventListener('input',()=>{ if(!mmiId){ mmiResetClock(); } });
+$('mmiStart').addEventListener('click',()=>{
+  if(!mmiCur) mmiShow(mmiPick());
+  mmiHalt(); mmiSetLen(); mmiElapsed=0;
+  mmiEnd=Date.now()+mmiLen*1000;
+  mmiId=setInterval(mmiTick,250); mmiTick(); mmiMsg('Answer out loud as if the interviewer is in the room.');
+});
+$('mmiStop').addEventListener('click',()=>{ if(mmiId){ mmiTick(); mmiHalt(); mmiMsg('Stopped. Add it to your log if you like.'); } });
+$('mmiReset').addEventListener('click',()=>{ mmiResetClock(); mmiMsg(''); });
+$('mmiLog').addEventListener('click',()=>{
+  if(mmiElapsed<30){ mmiMsg('Run the timer for at least 30 seconds first.'); return; }
+  if(addEntry(dateKey(new Date()),mmiElapsed,'MMI / interview practice',mmiCur?mmiCur.q:'')){
+    mmiMsg('Added '+fmtTime(mmiElapsed)+' to your revision log.'); mmiElapsed=0;
+  }
+});
+mmiResetClock();
+$('mmiLists').innerHTML = MMI_CATS.map(c=>{
+  const qs=MMI.filter(q=>q.cat===c);
+  return `<details><summary>${esc(c)} (${qs.length})</summary>
+    <ol>${qs.map(q=>`<li>${esc(q.q)}</li>`).join('')}</ol>
+    <p class="small"><b>What to think about:</b> ${esc(MMI_HINTS[c])}</p></details>`;
+}).join('');
+
+/* ============================================================
+   12. WORK EXPERIENCE LIST
+   ============================================================ */
+function renderWE(){
+  const q=$('weSearch').value.toLowerCase();
+  const type=$('weType').value;
+  const cost=$('weCost').value;
+  const list=WE.filter(w=>(w.t+' '+w.d).toLowerCase().includes(q) && (!type||w.type===type) && (!cost||w.cost===cost));
+  $('weGrid').innerHTML=list.map(w=>`<div class="card we">
+    <span class="tag">${esc(w.type)}</span> <span class="tag">${esc(w.cost)}</span>
+    <h3>${esc(w.t)}</h3>
+    <p>${esc(w.d)}</p>
+    <p><a href="${esc(w.l)}" target="_blank" rel="noopener noreferrer">Visit website &rarr;</a></p>
+  </div>`).join('') || '<p>No opportunities match.</p>';
+}
+['weSearch','weType','weCost'].forEach(id=>$(id).addEventListener('input',renderWE));
+renderWE();
+</script>
+</body>
+</html>
